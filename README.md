@@ -9,4 +9,4 @@ IA joue a TrackMania: https://www.youtube.com/watch?v=a8Bo2DHrrow </br>
 Neural network pour Mario https://www.youtube.com/watch?v=qv6UVOQ0F44 </br>
 IA joue a Minecraft https://www.youtube.com/watch?v=4PkzGNeAAeA&t=473s </br>
 Reconnaisance d'image : https://www.youtube.com/watch?v=vXqKniVe6P8 </br>
-IA joue a Flappy bird : https://www.youtube.com/watch?v=WSW-5m8lRMs </br>
+IA minecraft 2 : https://www.youtube.com/watch?v=z6PTrGifupU </br>
