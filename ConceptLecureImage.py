@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-image_jeu = cv2.imread("images/Test_Image_Base.jpg",cv2.IMREAD_GRAYSCALE)
-image_ennemie = cv2.imread("images/Test_Gapper.png",cv2.IMREAD_GRAYSCALE)
+image_jeu = cv2.imread("images/SnakeSimple.png",cv2.IMREAD_GRAYSCALE)
+image_ennemie = cv2.imread("images/pomme.png",cv2.IMREAD_GRAYSCALE)
 
 
 #Affichage des images 
@@ -21,11 +21,11 @@ w = image_ennemie.shape[1]
 h = image_ennemie.shape[0]
 
 
-threshold = .40
+threshold = .30
 yloc, xloc = np.where(result >= threshold)
 
 for (x, y) in zip(xloc, yloc):
-    cv2.rectangle(image_jeu, (x, y), (x + w, y + h), (0,255,255), 2)
+    cv2.rectangle(image_jeu, (x, y), (x + 30, y + 30), (0,255,255), 2)
 
     
 # cv2.rectangle(image_jeu, max_loc, (max_loc[0] + w, max_loc[1] + h), (0,255,255), 2)
