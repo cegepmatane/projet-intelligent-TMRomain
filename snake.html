@@ -11,6 +11,7 @@
   body {
     background: black;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -21,6 +22,9 @@
 </head>
 <body>
 <p id="score" value="0" style="color: white;">Votre score : </p>
+<p id="score" value="0" style="color: white;"></p>
+<p id="gameover" value="0" style="color: white;">Nombre d'essait :  </p>
+<div id="grilleVisuel" style="color: white; font-size: 5px;"></div>
 <input type="text" id="scoreValue" value="0" hidden>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
@@ -28,8 +32,17 @@ var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var scoreTexte = document.getElementById("score");
 var scoreValue = document.getElementById("scoreValue");
+var essaitValue = document.getElementById("gameover");
+var grilleVisuel = document.getElementById("grilleVisuel");
+var gridComposition = new Array(16,16);
+for (let x = 0; x < 25; x++) {
+    for (let y = 0; y < 25; y++) {
+      gridComposition[x,y] = "X";
+    }
+  }
 var grid = 16;
 var count = 0;
+var essait = 0;
 var snake = {
   x: 160,
   y: 160,
@@ -57,11 +70,14 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
+  
   requestAnimationFrame(loop);
   scoreTexte.textContent = "Votre Score: "+ score;
   scoreValue.value = score;
+  essaitValue.textContent = "Nombre d'essait : "+ essait;
+  essaitValue.value = essait;
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 12) {
+  if (++count < 14) {
     return;
   }
 
@@ -74,18 +90,22 @@ function loop() {
 
   // wrap snake position horizontally on edge of screen
   if (snake.x < 0) {
-    snake.x = canvas.width - grid;
+    // snake.x = canvas.width - grid;
+    resetJeu();
   }
   else if (snake.x >= canvas.width) {
-    snake.x = 0;
+    // snake.x = 0;
+    resetJeu();
   }
   
   // wrap snake position vertically on edge of screen
   if (snake.y < 0) {
-    snake.y = canvas.height - grid;
+    // snake.y = canvas.height - grid;
+    resetJeu();
   }
   else if (snake.y >= canvas.height) {
-    snake.y = 0;
+    // snake.y = 0;
+    resetJeu();
   }
 
   // keep track of where snake has been. front of the array is always the head
@@ -121,20 +141,46 @@ function loop() {
       
       // snake occupies same space as a body part. reset game
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
+        resetJeu();
       }
     }
   });
+  remplireGrille();
 }
 
+function remplireGrille(){
+  grilleVisuel.innerHTML = "";
+  for (let x = 0; x < 25; x++) {
+    grilleVisuel.innerHTML +="</br>"
+    for (let y = 0; y < 25; y++) {
+      gridComposition[x,y] = "X";
+      if(apple.x/16 == x &&  apple.y/16 == y){
+        gridComposition[x,y] = "A";
+      }
+      snake.cells.forEach(cell => {
+        if(cell.x/16 == x &&  cell.y/16 == y){
+        gridComposition[x,y] = "S";
+      }
+      });
+      // console.log(gridComposition[x,y]);
+      grilleVisuel.innerHTML += "["+gridComposition[x,y]+"]"
+    }
+  }
+
+}
+function resetJeu(){
+  snake.x = 160;
+  snake.y = 160;
+  snake.cells = [];
+  snake.maxCells = 4;
+  snake.dx = grid;
+  snake.dy = 0;
+
+  apple.x = getRandomInt(0, 25) * grid;
+  apple.y = getRandomInt(0, 25) * grid;
+  score = 0;
+  essait++;
+}
 
 
 
@@ -163,6 +209,7 @@ document.addEventListener('keydown', function(e) {
   
   // left arrow key
   if (e.which === 37 && snake.dx === 0) {
+    remplireGrille();
     snake.dx = -grid;
     snake.dy = 0;
   }
@@ -185,6 +232,7 @@ document.addEventListener('keydown', function(e) {
 
 // start the game
 requestAnimationFrame(loop);
+
 </script>
 </body>
 
