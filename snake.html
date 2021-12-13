@@ -22,7 +22,6 @@
 <body>
 <p id="score" value="0" style="color: white;">Votre score : </p>
 <input type="text" id="scoreValue" value="0" hidden>
-<input type="text" name="name" value="" id="mouvement" />
 <canvas width="400" height="400" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
@@ -137,17 +136,23 @@ function loop() {
 }
 
 
-const input = document.getElementById('mouvement')  
-input.addEventListener('change', (e) => {  
-  if(e.target.value=="haut"){
-    versLeHaut();
-  }
-});
 
 
 function versLeHaut(){
     snake.dy = -grid;
     snake.dx = 0;
+}
+function versLeBas(){
+    snake.dy = grid;
+    snake.dx = 0;
+}
+function versLeGauche(){
+    snake.dx = -grid;
+    snake.dy = 0;
+}
+function versLeDroite(){
+    snake.dx = grid;
+    snake.dy = 0;
 }
 // listen to keyboard events to move the snake
 document.addEventListener('keydown', function(e) {
