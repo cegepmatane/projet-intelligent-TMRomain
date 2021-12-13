@@ -1,6 +1,6 @@
 # projet-intelligent-TMRomain
 projet-intelligent-TMRomain created by GitHub Classroom </br>
-Gta jouer par python : https://www.youtube.com/watch?v=ks4MPfMq8aQ </br>
+Neural Network joue a un jeu simple : https://medium.com/@sanilkhurana7/building-a-neural-network-that-learns-to-play-a-game-part-1-e408ae7106d0 </br>
 Plusieur projet python : https://www.youtube.com/watch?v=YRAIUA-Oc1Y </br>
 Jeu dinnausore Google jouer par python : https://www.youtube.com/watch?v=xYymkeNh2lE </br>
 Python pour jeu web: https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117 </br>
