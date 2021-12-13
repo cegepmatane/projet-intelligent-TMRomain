@@ -1,0 +1,97 @@
+1639071506787	geckodriver	INFO	Listening on 127.0.0.1:49430
+1639071509845	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49431" "-no-remote" "-profile" "C:\\Users\\1931553\\AppData\\Local\\Temp\\rust_mozprofileF16L0J"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071514151	Marionette	INFO	Listening on port 49436
+1639071514676	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 235: Error: Invalid autocomplete selectedIndex
+1639071516199	Marionette	INFO	Stopped listening on port 49436
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1639071557277	geckodriver	INFO	Listening on 127.0.0.1:49493
+1639071560378	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49494" "-no-remote" "-profile" "C:\\Users\\1931553\\AppData\\Local\\Temp\\rust_mozprofileCdcb0a"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071564867	Marionette	INFO	Listening on port 49499
+1639071565205	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639071570590	Marionette	INFO	Stopped listening on port 49499
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1639071591495	geckodriver	INFO	Listening on 127.0.0.1:49533
+1639071594625	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49534" "-no-remote" "-profile" "C:\\Users\\1931553\\AppData\\Local\\Temp\\rust_mozprofilevppOGc"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071598987	Marionette	INFO	Listening on port 49539
+1639071599465	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639072046622	Marionette	INFO	Stopped listening on port 49539
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1553\\AppData\\Local\\Temp\\rust_mozprofile9Nd1IG"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071705680	Marionette	INFO	Listening on port 49599
+1639071705741	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639071732072	Marionette	INFO	Stopped listening on port 49599
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1553\\AppData\\Local\\Temp\\rust_mozprofilenqPVsR"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071728473	Marionette	INFO	Listening on port 49639
+1639071728581	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639071735522	Marionette	INFO	Stopped listening on port 49639
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1639071866402	geckodriver	INFO	Listening on 127.0.0.1:57386
+1639071869511	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57387" "-no-remote" "-profile" "C:\\Users\\1931553\\AppData\\Local\\Temp\\rust_mozprofilew584yi"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639071874544	Marionette	INFO	Listening on port 57392
+1639071874858	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639071879787	Marionette	INFO	Stopped listening on port 57392
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1639072713882	geckodriver	INFO	Listening on 127.0.0.1:62516
+1639072716999	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62517" "-no-remote" "-profile" "C:\\Users\\1931553\\AppData\\Local\\Temp\\rust_mozprofilefPZBWn"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1639072721307	Marionette	INFO	Listening on port 62522
+1639072721880	Marionette	WARN	TLS certificate errors will be ignored for this session
+1639072757479	Marionette	INFO	Stopped listening on port 62522
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
