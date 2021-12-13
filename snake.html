@@ -18,13 +18,17 @@
   canvas {
     border: 1px solid white;
   }
+  br {
+    content: " ";
+    display: none;
+}
   </style>
 </head>
 <body>
 <p id="score" value="0" style="color: white;">Votre score : </p>
 <p id="score" value="0" style="color: white;"></p>
 <p id="gameover" value="0" style="color: white;">Nombre d'essait :  </p>
-<div id="grilleVisuel" style="color: white; font-size: 5px;"></div>
+<div id="grilleVisuel" style="color: black; font-size: 5px;"></div>
 <input type="text" id="scoreValue" value="0" hidden>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
@@ -151,7 +155,7 @@ function loop() {
 function remplireGrille(){
   grilleVisuel.innerHTML = "";
   for (let x = 0; x < 25; x++) {
-    grilleVisuel.innerHTML +="</br>"
+    grilleVisuel.innerHTML +="<br><br>"
     for (let y = 0; y < 25; y++) {
       gridComposition[x,y] = "X";
       if(apple.x/16 == x &&  apple.y/16 == y){
@@ -166,7 +170,7 @@ function remplireGrille(){
       grilleVisuel.innerHTML += "["+gridComposition[x,y]+"]"
     }
   }
-
+  grilleVisuel.innerHTML +="<br>"
 }
 function resetJeu(){
   snake.x = 160;
