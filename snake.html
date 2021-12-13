@@ -157,13 +157,22 @@ function remplireGrille(){
   for (let x = 0; x < 25; x++) {
     grilleVisuel.innerHTML +="<br><br>"
     for (let y = 0; y < 25; y++) {
+      // Vide
       gridComposition[x,y] = "X";
       if(apple.x/16 == x &&  apple.y/16 == y){
+        // La pomme
         gridComposition[x,y] = "A";
       }
       snake.cells.forEach(cell => {
         if(cell.x/16 == x &&  cell.y/16 == y){
-        gridComposition[x,y] = "S";
+          if(cell == snake.cells[0]){
+            // La tete du serpent
+            gridComposition[x,y] = "H";
+          }else{
+            // Le corp du serpent
+            gridComposition[x,y] = "S";
+          }
+          
       }
       });
       // console.log(gridComposition[x,y]);
