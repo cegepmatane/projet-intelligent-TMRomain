@@ -17,7 +17,7 @@ def grilleDeDonneeExterne(oldgrille):
         del cleanRematches[-1]
         
         for ultraSubmatch in cleanRematches:
-            grilleTraiter.append([x,ultraSubmatch])
+            grilleTraiter.append([x,y,ultraSubmatch])
             x += 1
         # for ultraSubmatch in rematches:
         #     grilleTraiter[x][y] = ultraSubmatch
@@ -25,7 +25,27 @@ def grilleDeDonneeExterne(oldgrille):
         #     print("Position Y"+ y)
         #     print(grilleTraiter[x][y])
         #     x+=1
+        x =0
         y +=1
-    print(grilleTraiter[0][0])
+    # print(grilleTraiter[0][0])
     return grilleTraiter
 
+
+def trouverTete(grille):
+    coordX= 0
+    coordY= 0
+    for y in range(625):
+        coordY = y
+        if(grille[coordY][2] == "H"):
+            return(grille[coordY][1],grille[coordY][0])
+            
+def trouverPomme(grille):
+    coordX= 0
+    coordY= 0
+    for y in range(625):
+        coordY = y
+        if(grille[coordY][2] == "A"):
+            return(grille[coordY][1],grille[coordY][0])
+
+def differenceTetePomme():
+    coordTete = trouverTete

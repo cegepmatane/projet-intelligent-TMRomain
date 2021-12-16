@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import keyboard 
 import re
-from traitementDonnes import grilleDeDonneeExterne
+from traitementDonnes import grilleDeDonneeExterne, trouverTete
 driver = webdriver.Firefox()
 driver.get("http://51.161.32.22/Snake/snake.html")
 
@@ -31,14 +31,17 @@ def mouvement(leMouvement):
 while(boucle):
     if(oldgrille != grille.get_attribute('innerHTML')):
         oldgrille= grille.get_attribute('innerHTML')
-        # grilleDeDonnee()
+        grilleTraiter = grilleDeDonneeExterne(oldgrille)
     #Appuier sur q pour quitter la simulation
     if keyboard.is_pressed('q'): 
             driver.close()
             boucle = False
             break
     if keyboard.is_pressed('p'):
-         grilleDeDonneeExterne(oldgrille)
+        #  grilleDeDonneeExterne(oldgrille)
+        print(len(grilleTraiter))
+    if keyboard.is_pressed('t'):
+         print(trouverTete(grilleTraiter))
     
     #print(elem.text)
 
