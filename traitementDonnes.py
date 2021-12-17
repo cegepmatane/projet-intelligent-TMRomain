@@ -1,5 +1,5 @@
 import re
-
+import math
 #Recuperer les donnée de position du serpent de la pomme et de la grille en generale
 def grilleDeDonneeExterne(oldgrille):
     # print(oldgrille)
@@ -47,5 +47,9 @@ def trouverPomme(grille):
         if(grille[coordY][2] == "A"):
             return(grille[coordY][1],grille[coordY][0])
 
-def differenceTetePomme():
-    coordTete = trouverTete
+def differenceTetePomme(grille):
+    coordTete = trouverTete(grille)
+    coordPomme = trouverPomme(grille)
+    differenceX = math.fabs(coordTete[1]-coordPomme[1])
+    differenceY = math.fabs(coordTete[0]-coordPomme[0])
+    return differenceX,differenceY

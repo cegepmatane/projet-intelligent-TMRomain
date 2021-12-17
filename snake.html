@@ -18,25 +18,23 @@
   canvas {
     border: 1px solid white;
   }
-  br {
-    content: " ";
-    display: none;
-}
+
   </style>
 </head>
 <body>
 <p id="score" value="0" style="color: white;">Votre score : </p>
-<p id="score" value="0" style="color: white;"></p>
+<p id="scoreValue" value="0" style="color: black;"></p>
 <p id="gameover" value="0" style="color: white;">Nombre d'essait :  </p>
-<div id="grilleVisuel" style="color: black; font-size: 5px;"></div>
-<input type="text" id="scoreValue" value="0" hidden>
+<p id="gameoverValue" value="0" style="color: black;"></p>
+<div id="grilleVisuel" style="color: white; font-size: 5px;"></div>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var scoreTexte = document.getElementById("score");
 var scoreValue = document.getElementById("scoreValue");
-var essaitValue = document.getElementById("gameover");
+var essait = document.getElementById("gameover");
+var essaitValue = document.getElementById("gameoverValue");
 var grilleVisuel = document.getElementById("grilleVisuel");
 var gridComposition = new Array(16,16);
 for (let x = 0; x < 25; x++) {
@@ -77,9 +75,9 @@ function loop() {
   
   requestAnimationFrame(loop);
   scoreTexte.textContent = "Votre Score: "+ score;
-  scoreValue.value = score;
-  essaitValue.textContent = "Nombre d'essait : "+ essait;
-  essaitValue.value = essait;
+  scoreValue.textContent = score;
+  essait.textContent = "Nombre d'essait : "+ essait;
+  essaitValue.textContent = essait;
   // slow game loop to 15 fps instead of 60 (60/15 = 4)
   if (++count < 14) {
     return;
