@@ -18,3 +18,5 @@ Fiche de préparation Jeu simple avec Neural Network : https://docs.google.com/d
 </br>
 <h1>Ma fiche de projet: </h1></br>
 Mon projet : https://docs.google.com/document/d/1fhFvPzEYLxaQA5eBJMp6IC9W3OB_i1ZjrIgU9s1OVdc/edit?usp=sharing
+<h1>Source de données: </h1></br>
+Mes données :https://docs.google.com/document/d/1tT-JUTawiVtWMZjYZ99LOHSPT3_MiwzcoBi05RGJSQU/edit?usp=sharing
