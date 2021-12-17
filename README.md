@@ -15,3 +15,6 @@ IA minecraft 2 : https://minerl.io/</br>
 Fiche de préparation Minerl : https://docs.google.com/document/d/1LfowFa9mgmxRpzHMOKQhQYZZ__Kv61mXvhZY6euoS3c/edit?usp=sharing </br>
 Fiche de préparation MARI/O : https://docs.google.com/document/d/1Wd4ETD99U5974sLAFBrTt5UmoyJt-IFNgNjIide66do/edit?usp=sharing </br>
 Fiche de préparation Jeu simple avec Neural Network : https://docs.google.com/document/d/1Quxh9XF_MFUsnirVdr6vS21uoCihgJLORq58wLRrJjA/edit?usp=sharing </br>
+</br>
+<h1>Ma fiche de projet: </h1></br>
+Mon projet : https://docs.google.com/document/d/1fhFvPzEYLxaQA5eBJMp6IC9W3OB_i1ZjrIgU9s1OVdc/edit?usp=sharing
