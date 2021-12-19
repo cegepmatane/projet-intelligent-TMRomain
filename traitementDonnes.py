@@ -34,7 +34,7 @@ def grilleDeDonneeExterne(oldgrille):
 def trouverTete(grille):
     coordX= 0
     coordY= 0
-    for y in range(625):
+    for y in range(624):
         coordY = y
         if(grille[coordY][2] == "H"):
             return(grille[coordY][1],grille[coordY][0])
@@ -42,7 +42,7 @@ def trouverTete(grille):
 def trouverPomme(grille):
     coordX= 0
     coordY= 0
-    for y in range(625):
+    for y in range(624):
         coordY = y
         if(grille[coordY][2] == "A"):
             return(grille[coordY][1],grille[coordY][0])
@@ -50,6 +50,7 @@ def trouverPomme(grille):
 def differenceTetePomme(grille):
     coordTete = trouverTete(grille)
     coordPomme = trouverPomme(grille)
+    print(coordTete)
     differenceX = math.fabs(coordTete[1]-coordPomme[1])
     differenceY = math.fabs(coordTete[0]-coordPomme[0])
     return differenceX,differenceY

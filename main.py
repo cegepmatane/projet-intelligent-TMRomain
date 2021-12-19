@@ -3,13 +3,11 @@ from selenium.webdriver.common.keys import Keys
 import keyboard 
 import re
 import numpy as np
-from traitementDonnes import differenceTetePomme, grilleDeDonneeExterne
-from tensorflow import keras
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
+from traitementDonnes import differenceTetePomme, grilleDeDonneeExterne,trouverTete,trouverPomme
+from keras.models import Sequential
+from keras.layers import Dense
 import numpy as np
-from tensorflow.keras.utils import to_categorical
+from random import randrange
 
 from random import randint
 
@@ -25,33 +23,36 @@ jeu = driver.find_element_by_id("game")
 grille = driver.find_element_by_id("grilleVisuel")
 main_body = driver.find_element_by_xpath("//html")
 boucle = True
-oldgrille = grille.get_attribute('innerHTML')
+firstTime= True
+firstTimeAppend= True
+oldgrille = ""
 grilleTraiter = []
 
-
+positionSerpent = []
+actionPriseSerpent = []
+customScore = []
+positionPomme = []
+distanceTetePomme = []
+nombreMouvementArray = []
+xDataset = []
+yDataset = []
 
 #Neural network 
 # Frequence d'entrainement
-train_frequency = 10
+train_frequency = 2
 
 # Le neural Network
+# model = Sequential()
+# model.add(Dense(1, input_dim=1, activation='sigmoid'))
+# model.add(Dense(2, activation='softmax'))
+# model.compile(Adam(lr=0.1), loss='categorical_crossentropy', metrics=['accuracy'])
 model = Sequential()
-model.add(Dense(1, input_dim=1, activation='sigmoid'))
-model.add(Dense(2, activation='softmax'))
-model.compile(Adam(lr=0.1), loss='categorical_crossentropy', metrics=['accuracy'])
+model.add(Dense(12, input_dim=3, activation='relu'))
+model.add(Dense(8, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
 
-#Distance entre pomme et tete
-x_train = np.array([])
-#Decision prise par NN
-y_train = np.array([])
 
-fig, _ = plt.subplots(ncols=1, nrows=3, figsize=(6, 6))
-fig.tight_layout()
-
-all_scores = []
-average_scores = []
-average_score_rate = 10
-all_x, all_y = np.array([]), np.array([])
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 #Fonction qui envoie le mouvement
 def mouvement(leMouvement):
@@ -77,6 +78,8 @@ def bougerViaAction(action):
         mouvement("droite")
 
 oldScore = score.text
+oldPartie = score.text
+nombreMouvement = 0
 
 def visualiser():
     plt.subplot(3, 1, 1)
@@ -102,48 +105,96 @@ def visualiser():
     plt.title("Score moyen des 10 derniere partie")
 
     plt.pause(0.001)
-
-    
+positionActuel = []
+oldPositionSnake = []
+def choixAction():
+    return randrange(4)
 #Boucle du jeu
 while(boucle):
     if(oldgrille != grille.get_attribute('innerHTML')):
         oldgrille= grille.get_attribute('innerHTML')
-        grilleTraiter = grilleDeDonneeExterne(oldgrille)
+    if(firstTime == True):
+        if(oldgrille != ""):
+            grilleTraiter = grilleDeDonneeExterne(oldgrille)
+            oldPositionSnake = trouverTete(grilleTraiter)
+            dernierePositionPomme = trouverPomme(grilleTraiter)
+            positionActuel = oldPositionSnake
+            firstTime = False
     action = 1
-
+    
     if(oldScore !=score.text ):
         oldScore = score.text
-        x_train = np.append(x_train, [differenceTetePomme(grilleTraiter)])
-        y_train = np.append(y_train, [action])
+        positionPomme.append(dernierePositionPomme[0])
+        positionPomme.append(dernierePositionPomme[1])
+        dernierePositionPomme = trouverPomme(grilleTraiter)
+        # x_train = np.append(x_train, [differenceTetePomme(grilleTraiter)])
+        # y_train = np.append(y_train, [action])
+    if(oldPartie != int(gameover.text) ):
+        oldPartie = int(gameover.text)
+        if(oldPartie >= train_frequency):
+            customScore.append(int(score.text))
+            positionPomme.append(dernierePositionPomme)
+            nombreMouvementArray.append(nombreMouvement)
+            xDataset = [positionSerpent] + [actionPriseSerpent] + [positionPomme]
+            # xDataset = positionSerpent
+            yDataset = customScore + nombreMouvementArray
+            print(xDataset)
+            print(yDataset)
+            model.fit(xDataset, yDataset, epochs=150, batch_size=10)
+            # make class predictions with the model
+            predictions = (model.predict(xDataset) > 0.5).astype(int)
+            # summarize the first 5 cases
+            for i in range(5):
+                print('%s => %d (expected %d)' % (xDataset[i].tolist(), predictions[i], yDataset[i]))
 
-        # Prediction du neural NN
-    # prediction = model.predict_classes(np.array([[differenceTetePomme(grilleTraiter)]]))
-    predict_x=model.predict(differenceTetePomme(grilleTraiter)) 
-    classes_x=np.argmax(predict_x,axis=1)
 
-    r = randint(0, 100)
-    random_rate = 50*(1-int(gameover.text)/50)
-    visualiser()
+            positionSerpent = []
+            actionPriseSerpent = []
+            customScore =  []
+            positionPomme=[]
+            distanceTetePomme =[]
+            nombreMouvement= 0
+            train_frequency += 2
+    else :
+        if(oldgrille != ""):
+            grilleTraiter = grilleDeDonneeExterne(oldgrille)
+            positionActuel = trouverTete(grilleTraiter)
+        if(oldPositionSnake != positionActuel):
+            nombreMouvement +=1
+            action = choixAction()
+            bougerViaAction(action)
+            # distance = differenceTetePomme(grilleTraiter)
+
+            if(oldPositionSnake == None):
+                positionSerpent.append(positionSerpent[-1])
+            else:
+                positionSerpent.append(oldPositionSnake[0])
+                positionSerpent.append(oldPositionSnake[1])
+                # distanceTetePomme.append(distance[0])
+                # distanceTetePomme.append(distance[1])
+            actionPriseSerpent.append(action)
+            oldPositionSnake = positionActuel
+    # visualiser()
     # print(classes_x)
     # bougerViaAction(action)
-    if int(gameover.text) is not 0 and int(gameover.text) % train_frequency is 0:
-                # Before training, let's make the y_train array categorical
-                all_x = np.append(all_x, x_train)
-                all_y = np.append(all_y, y_train)
+    # if int(gameover.text) is not 0 and int(gameover.text) % train_frequency is 0:
+    #             # Before training, let's make the y_train array categorical
+    #             all_x = np.append(all_x, x_train)
+    #             all_y = np.append(all_y, y_train)
 
-                all_scores.append(int( score.text))
+    #             all_scores.append(int( score.text))
 
-                y_train_cat = to_categorical(y_train, num_classes = 2)
+    #             y_train_cat = to_categorical(y_train, num_classes = 2)
 
-                # Let's train the network
-                model.fit(x_train, y_train_cat, epochs = 50, verbose=1, shuffle=1)
+    #             # Let's train the network
+    #             model.fit(x_train, y_train_cat, epochs = 50, verbose=1, shuffle=1)
 
-                # Reset x_train and y_train
-                x_train = np.array([])
-                y_train = np.array([])
-                if int(gameover.text) is not 0 and int(gameover.text) % average_score_rate is 0:
-                    average_score = sum(all_scores)/len(all_scores)
-                    average_scores.append(average_score)
+    #             # Reset x_train and y_train
+    #             x_train = np.array([])
+    #             y_train = np.array([])
+    #             if int(gameover.text) is not 0 and int(gameover.text) % average_score_rate is 0:
+    #                 average_score = sum(all_scores)/len(all_scores)
+    #                 average_scores.append(average_score)
     #Appuier sur q pour quitter la simulation
     if keyboard.is_pressed('q'): 
             driver.close()
@@ -152,6 +203,9 @@ while(boucle):
     if keyboard.is_pressed('p'):
         #  grilleDeDonneeExterne(oldgrille)
         print(len(grilleTraiter))
+        # evaluate the keras model
+        _, accuracy = model.evaluate(xDataset, yDataset)
+        print('Accuracy: %.2f' % (accuracy*100))
     if keyboard.is_pressed('t'):
         # print(score.text)
          print(differenceTetePomme(grilleTraiter))
